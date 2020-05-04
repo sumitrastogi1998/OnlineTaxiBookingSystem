@@ -1,0 +1,14 @@
+<form class="form" #availableForm="ngForm">
+        <div class="form-group">
+            <label>Select Availability</label>
+            <select name="available" #available="ngModel" [class.is-invalid]="available.invalid && available.touched"
+                class="custom-select" [(ngModel)]="isAvailable" required>
+                <option value="" selected disabled>----Select Availability----</option>
+                <option>Available</option>
+                <option>Not Available</option>
+            </select>
+            <br>
+            <small class="text-danger" [class.d-none]="available.valid || available.untouched">Please Select one of the Available Options</small><br>
+            <input type="button" [disabled]="availableForm.form.invalid" value="Submit" (click)="changeAvailability()" class="btn btn-danger">
+        </div>
+        </form>

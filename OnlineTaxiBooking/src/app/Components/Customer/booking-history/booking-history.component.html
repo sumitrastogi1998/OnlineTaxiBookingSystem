@@ -1,0 +1,37 @@
+<table class="table table-striped" style="margin-top: 20px">
+    <thead>
+      <tr>
+        <th scope="col">Booking ID</th>
+        <th scope="col">From Date</th>
+        <th scope="col">To Date</th>
+        <th scope="col">Book Time</th>
+        <th scope="col">Drop Time</th>
+        <th scope="col">PickUp Point</th>
+        <th scope="col">Drop Point</th>
+        <th scope="col">FeedBack</th>
+        <th scope="col">Fare</th>
+        <th scope="col">employee ID</th>
+        <th scope="col">Cancel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of customerBooking;index as i;let today of todayDate">
+        <th scope="row">{{user.BookingID}}</th>
+        <td>{{user.FromDate | date}}</td>
+        <td>{{user.ToDate | date}}</td>
+        <td>{{user.BookTime}}</td>
+        <td>{{user.DropTime}}</td>
+        <td>{{user.PickupPoint}}</td>
+        <td>{{user.DropPoint}}</td>
+        <td>{{user.FeedBack}}</td>
+        <td>{{user.Fare}}</td>
+        <td>{{user.employeeId}}</td>
+        <td>
+            <input type="button" [disabled]="today.isTrue" value="Cancel Booking" (click)="cancelBooking(user.BookingID)">
+        </td>
+        
+      </tr>
+    </tbody>
+    
+  
+  </table>

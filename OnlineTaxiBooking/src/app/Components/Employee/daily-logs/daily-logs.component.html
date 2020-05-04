@@ -1,0 +1,104 @@
+<div class="container">
+    <form [formGroup]="employeeForm" (ngSubmit)="onFormSubmit()">
+        <div class="form-group">
+            <label for="inputname">Customer Name</label>
+            <input type="text" formControlName="custName" required #Name class="form-control" id="inputname"
+                placeholder="Customer Name">
+            <small class="text-danger"
+                *ngIf="!employeeForm.get('custName').value && employeeForm.get('custName').touched">Customer Name is
+                required</small>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="source1">Source</label>
+                <input type="text" formControlName="source" required #source class="form-control" id="source1"
+                    placeholder="Source">
+                <small class="text-danger"
+                    *ngIf="!employeeForm.get('source').value && employeeForm.get('source').touched">Source is
+                    required</small>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="dest">Destination</label>
+                <input type="text" formControlName="destination" required #destination class="form-control" id="dest"
+                    placeholder="Destination">
+                <small class="text-danger"
+                    *ngIf="!employeeForm.get('destination').value && employeeForm.get('destination').touched">Destination
+                    is
+                    required
+                </small>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="Fromdate">From Date</label>
+                <input type="text" formControlName="fromdate" [minDate]="minDate" bsDatepicker required #fromdate class="form-control" id="Fromdate">
+                <small class="text-danger"
+                    *ngIf="!employeeForm.get('fromdate').value && employeeForm.get('fromdate').touched">From date is
+                    required
+                </small>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="Todate">To Date</label>
+                <input type="text" formControlName="todate" [minDate]="minDate" bsDatepicker required #todate class="form-control" id="Todate">
+                <small class="text-danger"
+                    *ngIf="!employeeForm.get('todate').value && employeeForm.get('todate').touched">To date is required
+                </small>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="taxifare">Total Fare</label>
+                <input type="number" formControlName="totalfare" required #totalfare class="form-control" id="taxifare">
+                <small class="text-danger"
+                    *ngIf="!employeeForm.get('totalfare').value && employeeForm.get('totalfare').touched">Total Fare is
+                    required
+                </small>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="rating1">Rating</label>
+                <input type="range" formControlName="rating" required #rating class="form-control" id="rating1" min="1"
+                    max="5" step="1" value="3">
+                <small class="text-danger"
+                    *ngIf="!employeeForm.get('rating').value && employeeForm.get('rating').touched">Rating is required
+                </small>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="eId">Employee Id</label>
+                <input type="number" formControlName="eId" required #eId class="form-control" id="eId">
+                <small class="text-danger"
+                    *ngIf="!employeeForm.get('eId').value && employeeForm.get('eId').touched">EmployeeId is required
+                </small>
+            </div>
+        </div>
+        <button type="submit" [disabled]="!employeeForm.valid" class="btn btn-primary">Add Log</button>
+    </form>
+    <br><br>
+    <table class="table">
+        <tr ngclass="btn-primary">
+            <th class="tbl2">Id</th>
+            <th class="tbl2">Customer Name</th>
+            <th class="tbl2">Source</th>
+            <th class="tbl2">Destination</th>
+            <th class="tbl2">From Date</th>
+            <th class="tbl2">To Date</th>
+            <th class="tbl2">Total Fare</th>
+            <th class="tbl2">Rating</th>
+        </tr>
+        <tr *ngFor="let employee of allEmployees | async">
+            <td class="tbl2">{{employee.custId}}</td>
+            <td class="tbl2">{{employee.custName }}</td>
+            <td class="tbl2">{{employee.source}}</td>
+            <td class="tbl2">{{employee.destination}}</td>
+            <td class="tbl2">{{employee.fromdate | date}}</td>
+            <td class="tbl2">{{employee.todate | date}}</td>
+            <td class="tbl2">{{employee.totalfare}}</td>
+            <td class="tbl2">{{employee.rating}}</td>
+            <td class="tbl2">
+                <button type="button" class="btn btn-info" (click)="loadEmployeeToEdit(employee.custId)">Edit</button>
+            </td>
+            <td class="tbl2">
+                <button type="button" class="btn btn-danger" (click)="deleteEmployee(employee.custId)">Delete</button>
+            </td>
+        </tr>
+
+    </table>

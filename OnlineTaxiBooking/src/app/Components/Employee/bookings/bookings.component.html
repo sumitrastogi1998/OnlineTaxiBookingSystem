@@ -1,0 +1,32 @@
+<table class="table table-striped" style="margin-top: 20px">
+        <thead>
+          <tr>
+            <th scope="col">Booking ID</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Pickup Point</th>
+            <th scope="col">Drop Point</th>
+            <th scope="col">From Date</th>
+            <th scope="col">To Date</th>
+            <th scope="col">PickUp Time</th>
+            <th scope="col">Drop Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of customerBooking">
+            <th scope="row">{{user.BookingID}}</th>
+            <td>{{user.CustomerName}}</td>
+            <td>{{user.Email}}</td>
+            <td>{{user.MobileNumber}}</td>
+            <td>{{user.PickupPoint}}</td>
+            <td>{{user.DropPoint}}</td>
+            <td>{{user.FromDate | date}}</td>
+            <td>{{user.ToDate | date}}</td>
+            <td>{{user.BookTime}}</td>
+            <td>{{user.DropTime}}</td>
+          </tr>
+        </tbody>
+        
+      
+      </table>

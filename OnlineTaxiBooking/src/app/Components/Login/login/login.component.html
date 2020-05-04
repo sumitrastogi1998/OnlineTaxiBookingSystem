@@ -1,0 +1,49 @@
+<div class="py-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <span class="anchor" id="formLogin"></span>
+
+            <!-- form card login -->
+            <div class="card rounded-0">
+                <div class="card-header">
+                    <h3 class="mb-0">Login</h3>
+                </div>
+                <div class="card-body">
+                    <form class="form" #loginForm="ngForm">
+                        <div class="form-group">
+                            <label>Enter UserName</label>
+                            <input type="email" class="form-control rounded-0" [(ngModel)]="loginUserData.UserName" #username="ngModel" [class.is-invalid]="username.invalid && username.touched"
+                                placeholder="Enter UserName" name="token" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control rounded-0" [(ngModel)]="loginUserData.UserPassword" #pass="ngModel" [class.is-invalid]="pass.invalid && pass.touched"
+                                placeholder="Enter password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Role</label>
+                            <select name="userRole" #userRole="ngModel" [class.is-invalid]="userRole.invalid && userRole.touched"
+                                class="custom-select" [(ngModel)]="loginUserData.UserRole" required>
+                                <option value="" selected disabled>Select Role</option>
+                                <option>Admin</option>
+                                <option>Customer</option>
+                                <option>Employee</option>
+                            </select>
+                            <small class="text-danger" [class.d-none]="userRole.valid || userRole.untouched">Please Select one of the Role</small>
+                        </div>
+
+
+                        
+                        <input type="submit" [disabled]="loginForm.form.invalid" (click)="loginUser(loginUserData)" class="btn btn-success float-right"
+                            value="Login">
+                    </form>
+                </div>
+                <!--/card-block-->
+            </div>
+            <!-- /form card login -->
+
+        </div>
+
+
+    </div>
+</div>

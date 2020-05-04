@@ -1,0 +1,75 @@
+<div class="py-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <span class="anchor" id="formLogin"></span>
+
+            <!-- form card login -->
+            <div class="card rounded-0">
+                <div class="card-header">
+                    <h3 class="mb-0">Book Taxi</h3>
+                </div>
+                <div class="card-body">
+                    <form class="form" #registerForm="ngForm">
+                        <div class="form-group">
+                            <label for="uname1">FromDate</label>
+                            <input type="text" [minDate]="minDate" bsDatepicker [(ngModel)]="customerService.bookingData.FromDate" name="FromDate" class="form-control rounded-0" required readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="uname1">ToDate</label>
+                            <input type="text" [minDate]="minDate" bsDatepicker [(ngModel)]="customerService.bookingData.ToDate" name="ToDate" class="form-control rounded-0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="uname1">BookTime</label>
+                            <input type="time" [(ngModel)]="customerService.bookingData.BookTime" name="BookTime" class="form-control rounded-0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="uname1">DropTime</label>
+                            <input type="time" [(ngModel)]="customerService.bookingData.DropTime" name="DropTime" class="form-control rounded-0" required>
+                        </div>
+                        <div class="form-group">
+                                <label>Enter Source City</label>
+                                <select name="city" #city="ngModel" [class.is-invalid]="city.invalid && city.touched"
+                                    class="custom-select" [(ngModel)]="customerService.bookingData.PickupPoint" required readonly>
+                                    <option value="" selected disabled>----Select PickUp Point----</option>
+                                    <option>Jaipur</option>
+                                    <option>Jodhpur</option>
+                                    <option>Udaipur</option>
+                                    <option>Bikaner</option>
+                                    <option>Kota</option>
+                                </select>
+                                <small class="text-danger" [class.d-none]="city.valid || city.untouched">Please Select one of the Source City</small>
+                            </div>
+                        <div class="form-group">
+                            <label for="uname1">Destination</label>
+                            <select name="source" [(ngModel)]="customerService.bookingData.DropPoint" class="custom-select" required>
+                                <option value="" selected disabled>Select DropPoint</option>
+                                <option>Jaipur</option>
+                                <option>Jodhpur</option>
+                                <option>Updaipur</option>
+                                <option>Kota</option>
+                                <option>Bikaner</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="uname1">employeeId</label>
+                            <input type="number" [(ngModel)]="customerService.bookingData.employeeId" readonly name="employeeId" class="form-control rounded-0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="uname1">cuatomerId</label>
+                            <input type="number" [(ngModel)]="customerService.bookingData.customerId" readonly name="customerId" class="form-control rounded-0" required>
+                        </div>
+
+                        <button type="button" [disabled]="registerForm.form.invalid" (click)="BookTaxi(registerForm)" class="btn btn-primary float-right">BookTaxi</button>
+                    </form>
+                </div>
+                <!--/card-block-->
+            </div>
+            <!-- /form card login -->
+
+        </div>
+
+
+    </div>
+
+</div>

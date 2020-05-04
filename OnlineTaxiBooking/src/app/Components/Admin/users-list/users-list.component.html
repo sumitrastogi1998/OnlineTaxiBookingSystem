@@ -1,0 +1,22 @@
+<table class="table table-striped" style="margin-top: 20px">
+    <thead>
+      <tr>
+        <th scope="col">User Id</th>
+        <th scope="col">UserName</th>
+        <th scope="col">Password</th>
+        <th scope="col">Role</th>
+        <th scope="col">Change Password</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th scope="row">{{user.UserID}}</th>
+        <td>{{user.UserName}}</td>
+        <td>{{user.UserPassword}}</td>
+        <td>{{user.UserRole}}</td>
+        <td><input type="button" value="Change" (click)="changePassword(user.UserID,user.UserName,user.UserPassword,user.UserRole)" class="btn btn-success"></td>
+      </tr>
+    </tbody>
+    
+  
+  </table>

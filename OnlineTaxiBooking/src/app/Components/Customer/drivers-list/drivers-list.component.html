@@ -1,0 +1,23 @@
+<table class="table table-striped" style="margin-top: 20px">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Driver Name</th>
+        <th scope="col">Taxi Name</th>
+        <th scope="col">MobileNo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let driver of customerService.empTaxi;index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{driver.EmployeeName}}
+        </td>
+        <td>{{driver.TaxiModel}}
+        </td>
+        <td>{{driver.MobileNumber}}</td>
+        <td><input type="button" [disabled]="!driver.Available" value="BookDriver" class="btn btn-danger" (click)="fetchData(driver.EmployeeID)"></td>
+      </tr>
+    </tbody>
+    
+  
+  </table>

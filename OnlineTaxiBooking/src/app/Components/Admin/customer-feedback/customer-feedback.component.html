@@ -1,0 +1,23 @@
+<table class="table table-striped" style="margin-top: 20px">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Booking Id</th>
+      <th scope="col">Employee Id</th>
+      <th scope="col">Customer Id</th>
+      <th scope="col">User FeedBack</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let userbooking of users;index as i">
+      <th scope="row">{{i+1}}</th>
+      <td>{{userbooking.BookingID}}</td>
+      <td>{{userbooking.employeeId}}</td>
+      <td>{{userbooking.customerId}}</td>
+      <td>{{userbooking.FeedBack}}</td>
+      
+    </tr>
+  </tbody>
+  
+
+</table>

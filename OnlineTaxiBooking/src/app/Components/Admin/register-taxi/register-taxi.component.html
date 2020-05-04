@@ -1,0 +1,38 @@
+<div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <span class="anchor" id="formLogin"></span>
+  
+        <!-- form card login -->
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h3 class="mb-0">Taxi Details</h3>
+          </div>
+          <div class="card-body">
+            <form class="form" #registerForm="ngForm">
+              <div class="form-group">
+                <label for="uname1">Taxi Number</label>
+                <input type="text" [(ngModel)]="adminService.taxi.TaxiNumber" name="TaxiNumber" class="form-control rounded-0" required>
+              </div>
+              <div class="form-group">
+                <label for="uname1">Taxi Model</label>
+                <input type="text" [(ngModel)]="adminService.taxi.TaxiModel" name="TaxiModel" class="form-control rounded-0" required>
+              </div>
+
+              <div class="form-group">
+                <label for="uname1">Taxi OwnerId</label>
+                <input type="text" [(ngModel)]="adminService.taxi.TaxiOwnerId" name="TaxiOwnerId" class="form-control rounded-0" required>
+              </div>
+              
+              <button type="button" [disabled]="registerForm.form.invalid" (click)="registerTaxi(registerForm)" class="btn btn-primary float-right">Register</button>
+            </form>
+          </div>
+          <!--/card-block-->
+        </div>
+        <!-- /form card login -->
+  
+      </div>
+  
+  
+    </div>
+  </div>
