@@ -11,16 +11,20 @@ import { CustomerService } from '../../../Services/Customer/customer.service';
 })
 export class RegisterBookingComponent implements OnInit {
   BookingData: Booking = { BookingID: null, FromDate: null, ToDate: null, BookTime: null, DropTime: null, PickupPoint: '', DropPoint: '', employeeId: null, customerId: null, Feedback: null,Fare: null }
+  minDate: Date;
+  minToDate: Date;
   constructor(private router: Router, public adminService: AdminService, public customerService: CustomerService) {
     this.minDate = new Date()
+    
    }
 
-  minDate: Date;
+  
   ngOnInit(): void {
+    this.minToDate = this.customerService.bookingData.FromDate;
   }
   BookTaxi(registerForm) {
     this.customerService.bookingData.Fare  = this.customerService.calculateFare(this.customerService.bookingData.PickupPoint, this.customerService.bookingData.DropPoint)
-    alert(this.customerService.bookingData.Fare)
+    //alert(this.customerService.bookingData.Fare)
     this.router.navigate(['customer/payment'])
   }
 }

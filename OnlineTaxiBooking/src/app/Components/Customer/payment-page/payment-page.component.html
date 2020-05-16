@@ -2,11 +2,11 @@
   <thead>
     <tr>
       <th scope="col">From Date</th>
-      <td>{{customerService.bookingData.FromDate | date}}</td>
+      <td>{{customerService.bookingData.FromDate | date:'shortDate'}}</td>
     </tr>
     <tr>
       <th scope="col">To Date</th>
-      <td>{{customerService.bookingData.ToDate | date}}</td>
+      <td>{{customerService.bookingData.ToDate | date:'shortDate'}}</td>
     </tr>
     <tr>
       <th scope="col">Book Time</th>
@@ -26,7 +26,7 @@
       </tr>
     <tr>
       <th scope="col">Fare</th>
-      <td>{{customerService.bookingData.Fare}}</td>
+      <td>{{customerService.bookingData.Fare | currency:"₹"}}</td>
     </tr>
     <tr>
       <th scope="col">Employee ID</th>
@@ -38,7 +38,7 @@
     </tr>
     <tr>
         <td>
-          <input type="button" value="Payment Securely" (click)="Payment()" class="btn btn-success">
+          <input type="button" value="Pay Securely" (click)="Payment()" class="btn btn-success">
         </td>
       </tr>
     </thead>

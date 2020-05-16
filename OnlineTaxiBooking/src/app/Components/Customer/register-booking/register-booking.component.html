@@ -12,55 +12,69 @@
                     <form class="form" #registerForm="ngForm">
                         <div class="form-group">
                             <label for="uname1">FromDate</label>
-                            <input type="text" [minDate]="minDate" bsDatepicker [(ngModel)]="customerService.bookingData.FromDate" name="FromDate" class="form-control rounded-0" required readonly>
+                            <input type="text" [minDate]="minDate" bsDatepicker
+                                [(ngModel)]="customerService.bookingData.FromDate" name="FromDate"
+                                class="form-control rounded-0" required readonly>
                         </div>
 
                         <div class="form-group">
                             <label for="uname1">ToDate</label>
-                            <input type="text" [minDate]="minDate" bsDatepicker [(ngModel)]="customerService.bookingData.ToDate" name="ToDate" class="form-control rounded-0" required>
+                            <input type="text" [minDate]="minToDate" bsDatepicker
+                                [(ngModel)]="customerService.bookingData.ToDate" name="ToDate"
+                                class="form-control rounded-0" #toDate="ngModel"
+                                [class.is-invalid]="toDate.invalid && toDate.touched" required>
+                            <small class="text-danger" [class.d-none]="toDate.valid || toDate.untouched">To Date is
+                                required.</small>
                         </div>
                         <div class="form-group">
                             <label for="uname1">BookTime</label>
-                            <input type="time" [(ngModel)]="customerService.bookingData.BookTime" name="BookTime" class="form-control rounded-0" required>
+                            <input type="time" [(ngModel)]="customerService.bookingData.BookTime" name="BookTime"
+                                class="form-control rounded-0" #booktime="ngModel"
+                                [class.is-invalid]="booktime.invalid && booktime.touched" required>
+                            <small class="text-danger" [class.d-none]="booktime.valid || booktime.untouched">Book Time
+                                is
+                                required.</small>
                         </div>
                         <div class="form-group">
                             <label for="uname1">DropTime</label>
-                            <input type="time" [(ngModel)]="customerService.bookingData.DropTime" name="DropTime" class="form-control rounded-0" required>
+                            <input type="time" [(ngModel)]="customerService.bookingData.DropTime" name="DropTime"
+                                class="form-control rounded-0" #droptime="ngModel"
+                                [class.is-invalid]="droptime.invalid && droptime.touched" required>
+                            <small class="text-danger" [class.d-none]="droptime.valid || droptime.untouched">Drop Time
+                                is
+                                required.</small>
                         </div>
                         <div class="form-group">
-                                <label>Enter Source City</label>
-                                <select name="city" #city="ngModel" [class.is-invalid]="city.invalid && city.touched"
-                                    class="custom-select" [(ngModel)]="customerService.bookingData.PickupPoint" required readonly>
-                                    <option value="" selected disabled>----Select PickUp Point----</option>
-                                    <option>Jaipur</option>
-                                    <option>Jodhpur</option>
-                                    <option>Udaipur</option>
-                                    <option>Bikaner</option>
-                                    <option>Kota</option>
-                                </select>
-                                <small class="text-danger" [class.d-none]="city.valid || city.untouched">Please Select one of the Source City</small>
-                            </div>
+                            <label>Enter Source City</label>
+                            <input type="text" [(ngModel)]="customerService.bookingData.PickupPoint" name="DropTime"
+                                class="form-control rounded-0" required readonly>
+
+                        </div>
                         <div class="form-group">
                             <label for="uname1">Destination</label>
-                            <select name="source" [(ngModel)]="customerService.bookingData.DropPoint" class="custom-select" required>
-                                <option value="" selected disabled>Select DropPoint</option>
+                            <select name="source" [(ngModel)]="customerService.bookingData.DropPoint"
+                                class="custom-select" required>
+                                <option value="" selected disabled>---Select DropPoint---</option>
                                 <option>Jaipur</option>
                                 <option>Jodhpur</option>
-                                <option>Updaipur</option>
+                                <option>Udaipur</option>
                                 <option>Kota</option>
                                 <option>Bikaner</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="uname1">employeeId</label>
-                            <input type="number" [(ngModel)]="customerService.bookingData.employeeId" readonly name="employeeId" class="form-control rounded-0" required>
+                            <label for="uname1">Employee Id</label>
+                            <input type="number" [(ngModel)]="customerService.bookingData.employeeId" readonly
+                                name="employeeId" class="form-control rounded-0" required>
                         </div>
                         <div class="form-group">
-                            <label for="uname1">cuatomerId</label>
-                            <input type="number" [(ngModel)]="customerService.bookingData.customerId" readonly name="customerId" class="form-control rounded-0" required>
+                            <label for="uname1">Customer Id</label>
+                            <input type="number" [(ngModel)]="customerService.bookingData.customerId" readonly
+                                name="customerId" class="form-control rounded-0" required>
                         </div>
 
-                        <button type="button" [disabled]="registerForm.form.invalid" (click)="BookTaxi(registerForm)" class="btn btn-primary float-right">BookTaxi</button>
+                        <button type="button" [disabled]="registerForm.form.invalid" (click)="BookTaxi(registerForm)"
+                            class="btn btn-primary float-right">BookTaxi</button>
                     </form>
                 </div>
                 <!--/card-block-->

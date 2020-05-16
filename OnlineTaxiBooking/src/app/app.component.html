@@ -1,53 +1,65 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
   <a class="navbar-brand" href="#">OTBS</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" 
+  data-target="#navbarSupportedContent" 
+  aria-controls="navbarSupportedContent" (click)="isShown=!isShown"
+  [attr.aria-expanded]="isShown" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" [ngClass]="{'show':isShown}"  id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="this.authService.isAdmin" routerLink="/admin/registerEmployee" routerLinkActive="active">RegisterEmployee</a>
+        <a class="nav-link" (click)="isShown=false" *ngIf="this.authService.isAdmin" routerLink="/admin/registerEmployee" routerLinkActive="active">RegisterEmployee</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="this.authService.isAdmin" routerLink="/admin/feedback" routerLinkActive="active">User Feedback</a>
+        <a class="nav-link" (click)="isShown=false" *ngIf="this.authService.isAdmin" routerLink="/admin/feedback" routerLinkActive="active">Customer Feedback</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="this.authService.isAdmin" routerLink="/admin/userlist" routerLinkActive="active">List of Users</a>
+        <a class="nav-link" (click)="isShown=false" *ngIf="this.authService.isAdmin" routerLink="/admin/userlist" routerLinkActive="active">List of Users</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="!this.authService.isCustomer" routerLink="/customer/searchDriver" routerLinkActive="active">Search Drivers</a>
+        <a class="nav-link" (click)="isShown=false" *ngIf="this.authService.isAdmin" routerLink="/admin/employeeroster" routerLinkActive="active">Employee Rosters</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="!this.authService.isCustomer" routerLink="/customer/driverlist" routerLinkActive="active">Drivers List</a>
+        <a class="nav-link" (click)="isShown=false" *ngIf="!this.authService.isCustomer" routerLink="/customer/searchDriver" routerLinkActive="active">Search Taxi</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="!this.authService.isCustomer" routerLink="/customer/registerbooking" routerLinkActive="active">Register Booking</a>
+        <a class="nav-link" (click)="isShown=false" *ngIf="!this.authService.isCustomer" routerLink="/customer/driverlist" routerLinkActive="active">Taxis List</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="!this.authService.isCustomer" routerLink="/customer/payment" routerLinkActive="active">Payment</a>
+        <a class="nav-link" (click)="isShown=false" *ngIf="!this.authService.isCustomer" routerLink="/customer/registerbooking" routerLinkActive="active">Register Booking</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="!this.authService.isCustomer" routerLink="/customer/bookingHistory" routerLinkActive="active">Booking History</a>
+        <a class="nav-link"(click)="isShown=false"  *ngIf="this.authService.isAdmin" routerLink="/admin/printreports" routerLinkActive="active">Print Reports</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="this.authService.isEmployee" routerLink="/employee/logs" routerLinkActive="active">Maintain Daily Logs</a>
+        <a class="nav-link" (click)="isShown=false" *ngIf="!this.authService.isCustomer" routerLink="/customer/payment" routerLinkActive="active">Payment</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="this.authService.isEmployee" routerLink="/employee/booking" routerLinkActive="active">Bookings</a>
+        <a class="nav-link" (click)="isShown=false" *ngIf="!this.authService.isCustomer" routerLink="/customer/bookingHistory" routerLinkActive="active">Booking History</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" *ngIf="this.authService.isEmployee" routerLink="/employee/available" routerLinkActive="active">Select Availability</a>
+        <a class="nav-link" (click)="isShown=false" *ngIf="this.authService.isEmployee" routerLink="/employee/logs" routerLinkActive="active">Maintain Daily Logs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="isShown=false" *ngIf="this.authService.isEmployee" routerLink="/employee/booking" routerLinkActive="active">Bookings</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" (click)="isShown=false" *ngIf="this.authService.isEmployee" routerLink="/employee/available" routerLinkActive="active">Select Availability</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="isShown=false" *ngIf="this.authService.isEmployee" routerLink="/employee/roster" routerLinkActive="active">Check Rosters</a>
         </li>
       
     </ul>
     <ul class="navbar-nav">
-        <a class="nav-link" *ngIf="!this.authService.isUserLoggedIn" routerLink="/login" routerLinkActive="active">Login</a>
-        <a class="nav-link" *ngIf="!this.authService.isUserLoggedIn" routerLink="/customer/registercustomer" routerLinkActive="active">Register</a>
-        <a class="nav-link" *ngIf="this.authService.isUserLoggedIn" style="cursor: pointer;" (click)="this.authService.logOut()">LogOut</a>
+        <a class="nav-link" (click)="isShown=false" *ngIf="!this.authService.isUserLoggedIn" routerLink="/login" routerLinkActive="active">Login</a>
+        <a class="nav-link" (click)="isShown=false" *ngIf="!this.authService.isUserLoggedIn" routerLink="/customer/registercustomer" routerLinkActive="active">Register</a>
+        <a class="nav-link" (click)="isShown=false" *ngIf="this.authService.isUserLoggedIn" style="cursor: pointer;" (click)="this.authService.logOut()">LogOut</a>
     </ul>
   </div>
 </nav>    

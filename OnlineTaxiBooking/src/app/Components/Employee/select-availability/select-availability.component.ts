@@ -16,7 +16,7 @@ export class SelectAvailabilityComponent implements OnInit {
   }
 
   changeAvailability(){
-    alert(this.isAvailable+" "+this.auth.empUser.UserName+" "+this.auth.empUser.UserPassword)
+    //alert(this.isAvailable+" "+this.auth.empUser.UserName+" "+this.auth.empUser.UserPassword)
     this.empService.changeAvailability(this.isAvailable,this.auth.empUser.UserName,this.auth.empUser.UserPassword).subscribe(res=>{
       alert(JSON.stringify(res))
     })

@@ -20,12 +20,14 @@ export class SearchDriversComponent implements OnInit {
   }
 
   searchDriver(search){
-    alert(JSON.stringify(search))
+    //alert(JSON.stringify(search))
     this.customerService.searchDriver().subscribe(res=>{
-      JSON.stringify(res)
+      //JSON.stringify(res)
       this.customerService.empTaxi = JSON.parse(JSON.stringify(res))
-      alert(this.customerService.empTaxi)
+      //alert(this.customerService.empTaxi)
       this.router.navigate(['customer/driverlist'])
+    }, (err)=>{
+      alert(JSON.stringify(err))
     })
   }
 

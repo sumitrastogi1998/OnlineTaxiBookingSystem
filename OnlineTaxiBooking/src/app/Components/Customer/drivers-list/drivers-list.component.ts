@@ -16,8 +16,7 @@ export class DriversListComponent implements OnInit {
   fetchData(empID){
     this.customerService.bookingData.customerId = this.customerService.customer.CustomerID;
     this.customerService.bookingData.employeeId = empID;
-    alert(this.customerService.bookingData.customerId+" "+this.customerService.bookingData.employeeId)
-    
+    //alert(this.customerService.bookingData.customerId+" "+this.customerService.bookingData.employeeId)
     //this.customerService.bookingData.FromDate = this.customerService.
     this.router.navigate(['customer/registerbooking'])
   }

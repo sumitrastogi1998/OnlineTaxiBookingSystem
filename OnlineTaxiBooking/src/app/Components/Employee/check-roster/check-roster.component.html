@@ -2,7 +2,6 @@
     <thead>
       <tr>
         <th scope="col">Roster Id</th>
-        <th scope="col">Employee Id</th>
         <th scope="col">From Date</th>
         <th scope="col">To Date</th>
         <th scope="col">In Time</th>
@@ -12,9 +11,8 @@
     <tbody>
       <tr *ngFor="let roster of empRosters">
         <th scope="row">{{roster.RosterID}}</th>
-        <td>{{roster.employeeId}}</td>
-        <td>{{roster.FromDate | date: 'shortDate'}}</td>
-        <td>{{roster.ToDate | date: 'shortDate'}}</td>
+        <td>{{roster.FromDate | date:'shortDate'}}</td>
+        <td>{{roster.ToDate | date:'shortDate'}}</td>
         <td>{{roster.InTime}}</td>
         <td>{{roster.OutTime}}</td>
       </tr>

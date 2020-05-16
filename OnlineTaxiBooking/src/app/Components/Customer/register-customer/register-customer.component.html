@@ -1,45 +1,63 @@
 <div class="py-5">
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-        <span class="anchor" id="formLogin"></span>
-  
-        <!-- form card login -->
-        <div class="card rounded-0">
-          <div class="card-header">
-            <h3 class="mb-0">Register Customer</h3>
-          </div>
-          <div class="card-body">
-            <form class="form" #registerForm="ngForm">
-              <div class="form-group">
-                <label for="uname1">CustomerName</label>
-                <input type="text" [(ngModel)]="customerService.customer.CustomerName" name="CustomerName" class="form-control rounded-0" required>
-              </div>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <span class="anchor" id="formLogin"></span>
 
-              <div class="form-group">
-                <label for="uname1">Password</label>
-                <input type="password" [(ngModel)]="customerService.customer.CustomerPassword" name="CustomerPassword" class="form-control rounded-0" required>
-              </div>
-
-              <div class="form-group">
-                <label for="uname1">MobileNumber</label>
-                <input type="text" [(ngModel)]="customerService.customer.MobileNumber" name="MobileNumber" class="form-control rounded-0" required>
-              </div>
-
-             
-              <div class="form-group">
-                <label for="uname1">Email</label>
-                <input type="email" [(ngModel)]="customerService.customer.Email" name="Email" class="form-control rounded-0" required>
-              </div>
-                        
-              <button type="button" [disabled]="registerForm.form.invalid" (click)="registerCustomer(registerForm)" class="btn btn-primary float-right">Register</button>
-            </form>
-          </div>
-          <!--/card-block-->
+      <!-- form card login -->
+      <div class="card rounded-0">
+        <div class="card-header">
+          <h3 class="mb-0">Register Customer</h3>
         </div>
-        <!-- /form card login -->
-  
+        <div class="card-body">
+          <form class="form" #registerForm="ngForm">
+            <div class="form-group">
+              <label for="uname1">CustomerName</label>
+              <input type="text" [(ngModel)]="customerService.customer.CustomerName" name="CustomerName"
+                class="form-control rounded-0" #customername="ngModel"
+                [class.is-invalid]="customername.invalid && customername.touched" pattern="[a-zA-Z]+[\-'\s]?[a-zA-Z ]+$"
+                required>
+              <small class="text-danger" [class.d-none]="customername.valid || customername.untouched">Customer Name is
+                required and contain alphabets only.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="uname1">Password</label>
+              <input type="password" [(ngModel)]="customerService.customer.CustomerPassword" name="CustomerPassword"
+                class="form-control rounded-0" #pass="ngModel" [class.is-invalid]="pass.invalid && pass.touched"
+                required>
+              <small class="text-danger" [class.d-none]="pass.valid || pass.untouched">Password is
+                required.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="uname1">MobileNumber</label>
+              <input type="text" [(ngModel)]="customerService.customer.MobileNumber" name="MobileNumber"
+                class="form-control rounded-0" #mobile1="ngModel"
+                [class.is-invalid]="mobile1.invalid && mobile1.touched" pattern="^[1-9]{1}[0-9]{9}$" required>
+              <small class="text-danger" [class.d-none]="mobile1.valid || mobile1.untouched">Mobile Number is
+                required with 10 digits.</small>
+            </div>
+
+
+            <div class="form-group">
+              <label for="uname1">Email</label>
+              <input type="email" [(ngModel)]="customerService.customer.Email" name="Email"
+                class="form-control rounded-0" #email1="ngModel" [class.is-invalid]="email1.invalid && email1.touched"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+              <small class="text-danger" [class.d-none]="email1.valid || email1.untouched">Email is
+                required in correct format</small>
+            </div>
+
+            <button type="button" [disabled]="registerForm.form.invalid" (click)="registerCustomer(registerForm)"
+              class="btn btn-primary float-right">Register</button>
+          </form>
+        </div>
+        <!--/card-block-->
       </div>
-  
-  
+      <!-- /form card login -->
+
     </div>
+
+
   </div>
+</div>

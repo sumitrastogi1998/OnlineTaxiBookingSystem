@@ -8,6 +8,7 @@ import { AuthService } from './Services/Authentication/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  isShown: boolean = false
   constructor(public authService: AuthService){
     
   }

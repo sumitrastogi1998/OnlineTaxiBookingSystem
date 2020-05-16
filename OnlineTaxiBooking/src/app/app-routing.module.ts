@@ -21,6 +21,9 @@ import { PaymentPageComponent } from './Components/Customer/payment-page/payment
 import { EmployeeAuthGuard } from './Guards/employee-auth.guard';
 import { SelectAvailabilityComponent } from './Components/Employee/select-availability/select-availability.component';
 import { BookingHistoryComponent } from './Components/Customer/booking-history/booking-history.component';
+import { CheckRosterComponent } from './Components/Employee/check-roster/check-roster.component';
+import { EmployeeRosterComponent } from './Components/Admin/employee-roster/employee-roster.component';
+import { PrintReportComponent } from './Components/Admin/print-report/print-report.component';
 
 const routes: Routes = [
   {path: '',component: HomeComponent},
@@ -30,6 +33,8 @@ const routes: Routes = [
   {path: 'admin/userlist', component: UsersListComponent, canActivate: [AuthGuard]},
   {path: 'admin/taxi', component: RegisterTaxiComponent, canActivate: [AuthGuard]},
   {path: 'admin/changepassword', component: ChangePasswordComponent, canActivate: [AuthGuard]},
+  {path: 'admin/employeeroster', component: EmployeeRosterComponent, canActivate: [AuthGuard]},
+  {path: 'admin/printreports', component: PrintReportComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'customer/registerbooking', component: RegisterBookingComponent, canActivate: [CustomerAuthGuard]},
   {path: 'customer/registercustomer', component: RegisterCustomerComponent},
@@ -41,6 +46,7 @@ const routes: Routes = [
    {path: 'employee/logs', component: DailyLogsComponent, canActivate: [EmployeeAuthGuard]},
   {path: 'employee/booking', component: BookingsComponent, canActivate: [EmployeeAuthGuard]},
   {path: 'employee/available', component: SelectAvailabilityComponent, canActivate: [EmployeeAuthGuard]},
+  {path: 'employee/roster',component: CheckRosterComponent, canActivate: [EmployeeAuthGuard]},
   {path: '**', component: NotfoundComponent}
 ];
 

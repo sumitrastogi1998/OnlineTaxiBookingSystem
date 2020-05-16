@@ -26,6 +26,13 @@ import { BookingsComponent } from './Components/Employee/bookings/bookings.compo
 import { PaymentPageComponent } from './Components/Customer/payment-page/payment-page.component';
 import { SelectAvailabilityComponent } from './Components/Employee/select-availability/select-availability.component';
 import { BookingHistoryComponent } from './Components/Customer/booking-history/booking-history.component';
+import { CheckRosterComponent } from './Components/Employee/check-roster/check-roster.component';
+import { AuthService } from './Services/Authentication/auth.service';
+import { CustomerService } from './Services/Customer/customer.service';
+import { EmployeeService } from './Services/Employee/employee.service';
+import { PrintReportComponent } from './Components/Admin/print-report/print-report.component';
+import { ConfirmEqualValidatorDirective } from './Components/Admin/change-password/confirm-equal-validator.directive';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +55,10 @@ import { BookingHistoryComponent } from './Components/Customer/booking-history/b
     BookingsComponent,
     PaymentPageComponent,
     SelectAvailabilityComponent,
-    BookingHistoryComponent
+    BookingHistoryComponent,
+    CheckRosterComponent,
+    PrintReportComponent,
+    ConfirmEqualValidatorDirective
   ],
   imports: [
     BrowserModule,
@@ -59,7 +69,7 @@ import { BookingHistoryComponent } from './Components/Customer/booking-history/b
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AdminService],
+  providers: [AdminService, AuthService,CustomerService,EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

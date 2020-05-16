@@ -16,26 +16,208 @@ export class CustomerService {
   fare: number
   employee: Employee[]
   user: User = {UserID:null,UserName:null, UserPassword: null, UserRole: null}
-  empTaxi: EmployeeTaxi = {EmployeeID: null,EmployeeName: null,MobileNumber: null,City: null,Email: null,LicenseNumber: null,Password: null,Available: true,TaxiID: null,TaxiModel: null,TaxiNumber: null,TaxiOwnerId:null}
-  
+  empTaxi: EmployeeTaxi[] 
   
   constructor(private http: HttpClient) { }
 
   calculateFare(Source: string, Destination: string){
     if(Source=="Jaipur" && Destination=="Jodhpur"){
-      this.fare = 4000
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1000
+      }
+      else{
+        this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
       return this.fare
     }
     if(Source=="Jaipur" && Destination=="Udaipur"){
-      this.fare = 4000
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1500
+      }
+      else{
+        this.fare = 2000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
       return this.fare
     }
     if(Source=="Jaipur" && Destination=="Kota"){
-      this.fare = 4000
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1000
+      }
+      else{
+        this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 1000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
       return this.fare
     }
     if(Source=="Jaipur" && Destination=="Bikaner"){
-      this.fare = 4000
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=2000
+      }
+      else{
+        this.fare = 2500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 2000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Jodhpur" && Destination=="Jaipur"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1000
+      }
+      else{
+        this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 1000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Jodhpur" && Destination=="Udaipur"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1500
+      }
+      else{
+        this.fare = 2000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 2000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Jodhpur" && Destination=="Kota"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1000
+      }
+      else{
+        this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Jodhpur" && Destination=="Bikaner"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1000
+      }
+      else{
+        this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 1000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Udaipur" && Destination=="Jodhpur"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1500
+      }
+      else{
+        this.fare = 2000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 2000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Udaipur" && Destination=="Bikaner"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1000
+      }
+      else{
+        this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 1000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Udaipur" && Destination=="Kota"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1000
+      }
+      else{
+        this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Udaipur" && Destination=="Jaipur"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=2500
+      }
+      else{
+        this.fare = 3000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 3000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Kota" && Destination=="Jodhpur"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1500
+      }
+      else{
+        this.fare = 2000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 2000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Kota" && Destination=="Udaipur"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=2500
+      }
+      else{
+        this.fare = 3000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 3000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Kota" && Destination=="Bikaner"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1000
+      }
+      else{
+        this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Kota" && Destination=="Jaipur"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1000
+      }
+      else{
+        this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 1000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Bikaner" && Destination=="Jodhpur"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=3500
+      }
+      else{
+        this.fare = 4000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 4000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Bikaner" && Destination=="Udaipur"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=2500
+      }
+      else{
+        this.fare = 3000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 3000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Bikaner" && Destination=="Kota"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1500
+      }
+      else{
+        this.fare = 2000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 2000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      return this.fare
+    }
+    if(Source=="Bikaner" && Destination=="Jaipur"){
+      if(this.bookingData.ToDate.getDate()==this.bookingData.FromDate.getDate()){
+        this.fare=1000
+      }
+      else{
+        this.fare = 1500*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
+      }      
+      //this.fare = 1000*(this.bookingData.ToDate.getDate()-this.bookingData.FromDate.getDate())
       return this.fare
     }
   }
@@ -44,11 +226,12 @@ export class CustomerService {
     return this.http.delete("http://localhost:9207/api/Booking/CancelBooking?id=" + id)
   }
   sendFeedback(customerid: number){
+    //alert(customerid + " "+this.bookingData.Feedback)
     return this.http.get("http://localhost:9207/api/Booking/SendFeedback/"+customerid+"/"+this.bookingData.Feedback)
   }
 
   BookTaxi(booking: Booking){
-    alert(JSON.stringify(booking))
+    //alert(JSON.stringify(booking))
     return this.http.post("http://localhost:9207/api/Booking",booking)
   }
 
@@ -56,7 +239,7 @@ export class CustomerService {
     return this.http.get("http://localhost:9207/api/Customer/GetCustomer/"+userName+"/"+password)
   }
   searchDriver(){
-    alert(this.bookingData.PickupPoint)
+    //alert(this.bookingData.PickupPoint)
     return this.http.get("http://localhost:9207/api/Employee/SearchEmployees/"+this.bookingData.PickupPoint)
   }
 
@@ -64,12 +247,12 @@ export class CustomerService {
     return this.http.get("http://localhost:9207/api/Employee/updateEmployee/"+empId);
   }
   registerCustomer(customer: Customer){
-    alert(customer)
+    //alert(customer)
     return this.http.post("http://localhost:9207/api/Customer", customer)
   }
 
   registerUser(customer: Customer){
-    alert(customer)
+    //alert(customer)
     this.user.UserName = customer.Email
     this.user.UserPassword = customer.CustomerPassword
     this.user.UserRole = "Customer"
@@ -77,7 +260,7 @@ export class CustomerService {
   }
 
   fetchBookings(userName:string, pass: string){
-    alert(userName)
+    //alert(userName)
     return this.http.get("http://localhost:9207/api/Booking/GetCustomerBookings/"+userName+"/"+pass);
   }
 }

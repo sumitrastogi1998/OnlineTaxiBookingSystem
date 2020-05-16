@@ -16,8 +16,11 @@ export class BookingsComponent implements OnInit {
   ngOnInit(): void {
     this.employeeService.fetchBookings(this.authService.empUser.UserName,this.authService.empUser.UserPassword).subscribe(res=>{
       this.customerBooking = JSON.parse(JSON.stringify(res))
-      alert(JSON.stringify(this.customerBooking))
-    })
+      //alert(JSON.stringify(this.customerBooking))
+    },
+  err=>{
+    alert(JSON.stringify(err))
+  })
   }
 
 

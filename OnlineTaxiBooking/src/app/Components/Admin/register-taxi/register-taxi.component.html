@@ -1,38 +1,53 @@
 <div class="py-5">
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-        <span class="anchor" id="formLogin"></span>
-  
-        <!-- form card login -->
-        <div class="card rounded-0">
-          <div class="card-header">
-            <h3 class="mb-0">Taxi Details</h3>
-          </div>
-          <div class="card-body">
-            <form class="form" #registerForm="ngForm">
-              <div class="form-group">
-                <label for="uname1">Taxi Number</label>
-                <input type="text" [(ngModel)]="adminService.taxi.TaxiNumber" name="TaxiNumber" class="form-control rounded-0" required>
-              </div>
-              <div class="form-group">
-                <label for="uname1">Taxi Model</label>
-                <input type="text" [(ngModel)]="adminService.taxi.TaxiModel" name="TaxiModel" class="form-control rounded-0" required>
-              </div>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <span class="anchor" id="formLogin"></span>
 
-              <div class="form-group">
-                <label for="uname1">Taxi OwnerId</label>
-                <input type="text" [(ngModel)]="adminService.taxi.TaxiOwnerId" name="TaxiOwnerId" class="form-control rounded-0" required>
-              </div>
-              
-              <button type="button" [disabled]="registerForm.form.invalid" (click)="registerTaxi(registerForm)" class="btn btn-primary float-right">Register</button>
-            </form>
-          </div>
-          <!--/card-block-->
+      <!-- form card login -->
+      <div class="card rounded-0">
+        <div class="card-header">
+          <h3 class="mb-0">Taxi Details</h3>
         </div>
-        <!-- /form card login -->
-  
+        <div class="card-body">
+          <form class="form" #registerForm="ngForm">
+            <div class="form-group">
+              <label for="uname1">Taxi Number</label>
+              <input type="text" [(ngModel)]="adminService.taxi.TaxiNumber" name="TaxiNumber"
+                class="form-control rounded-0" #taxiNumber="ngModel"
+                [class.is-invalid]="taxiNumber.invalid && taxiNumber.touched"
+                pattern="^[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{4}$" required>
+              <small class="text-danger" [class.d-none]="taxiNumber.valid || taxiNumber.untouched">Taxi Number is
+                required in correct format.(** Hint:- RJ14DA9884)</small>
+            </div>
+            <div class="form-group">
+              <label for="uname1">Taxi Model</label>
+              <input type="text" [(ngModel)]="adminService.taxi.TaxiModel" name="TaxiModel"
+                class="form-control rounded-0" #model="ngModel" [class.is-invalid]="model.invalid && model.touched"
+                pattern="[a-zA-Z]+[\-'\s]?[a-zA-Z ]+$" required>
+              <small class="text-danger" [class.d-none]="model.valid || model.untouched">Taxi Model is
+                required and contain alphabets only.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="uname1">Taxi OwnerId</label>
+              <input type="number" [(ngModel)]="adminService.taxi.TaxiOwnerId" name="TaxiOwnerId"
+                class="form-control rounded-0" #ownerId="ngModel"
+                [class.is-invalid]="ownerId.invalid && ownerId.touched" required readonly>
+              <small class="text-danger" [class.d-none]="ownerId.valid || ownerId.untouched">Taxi Owner Id is
+                required and contain digits only.</small>
+            </div>
+
+            <button type="button" [disabled]="registerForm.form.invalid" (click)="registerTaxi(registerForm)"
+              class="btn btn-primary float-right">Register</button>
+            <button type="button" (click)="reset(registerForm)" class="btn btn-danger float-left">Reset</button>
+          </form>
+        </div>
+        <!--/card-block-->
       </div>
-  
-  
+      <!-- /form card login -->
+
     </div>
+
+
   </div>
+</div>

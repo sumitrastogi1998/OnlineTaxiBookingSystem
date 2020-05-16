@@ -54,6 +54,7 @@ export class DailyLogsComponent implements OnInit {
           this.loadAllEmployees();
           this.employeeIdUpdate = null;
           this.employeeForm.reset();
+          alert(this.message)
         }
       );
     } else {
@@ -64,6 +65,7 @@ export class DailyLogsComponent implements OnInit {
         this.loadAllEmployees();
         this.employeeIdUpdate = null;
         this.employeeForm.reset();
+        alert(this.message)
       });
     }
   }
@@ -80,6 +82,8 @@ export class DailyLogsComponent implements OnInit {
       this.employeeForm.controls['totalfare'].setValue(employee.totalfare);
       this.employeeForm.controls['rating'].setValue(employee.rating);
       this.employeeForm.controls['eId'].setValue(employee.eId);
+    }, (err)=>{
+      alert(JSON.stringify(err))
     });
   }
   deleteEmployee(employeeId: string) {
@@ -90,6 +94,7 @@ export class DailyLogsComponent implements OnInit {
         this.loadAllEmployees();
         this.employeeIdUpdate = null;
         this.employeeForm.reset();
+        alert(this.message)
       });
     }
   }

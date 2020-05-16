@@ -15,19 +15,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of customerBooking;index as i;let today of todayDate">
+      <tr *ngFor="let user of customerBooking;index as i">
         <th scope="row">{{user.BookingID}}</th>
-        <td>{{user.FromDate | date}}</td>
-        <td>{{user.ToDate | date}}</td>
+        <td>{{user.FromDate | date:'shortDate'}}</td>
+        <td>{{user.ToDate | date:'shortDate'}}</td>
         <td>{{user.BookTime}}</td>
         <td>{{user.DropTime}}</td>
         <td>{{user.PickupPoint}}</td>
         <td>{{user.DropPoint}}</td>
         <td>{{user.FeedBack}}</td>
-        <td>{{user.Fare}}</td>
+        <td>{{user.Fare | currency:"₹"}}</td>
         <td>{{user.employeeId}}</td>
         <td>
-            <input type="button" [disabled]="today.isTrue" value="Cancel Booking" (click)="cancelBooking(user.BookingID)">
+            <input type="button" [disabled]="!todayDate[i].isTrue" value="Cancel Booking" (click)="cancelBooking(user.BookingID)" class="btn btn-danger">
         </td>
         
       </tr>

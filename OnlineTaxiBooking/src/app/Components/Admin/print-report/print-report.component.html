@@ -1,0 +1,148 @@
+<form class="form" #reportForm="ngForm">
+    <div class="form-group">
+        <label>Print Reports</label>
+        <select name="report" #report="ngModel" [class.is-invalid]="report.invalid && report.touched" class="custom-select" [(ngModel)]="reportOf"
+            required>
+            <option value="" selected disabled>----Get Report Of----</option>
+            <option>Employee</option>
+            <option>Customer</option>
+            <option>EmployeeRosters</option>
+            <option>Taxi</option>
+            <option>Bookings</option>
+        </select>
+        <br>
+        <small class="text-danger" [class.d-none]="report.valid || report.untouched">Select one of the Options</small>
+        <br>
+        <input type="button" [disabled]="reportForm.form.invalid" value="GetReport" (click)="getReports(report.value)" class="btn btn-danger">
+    </div>
+    <div class="container" *ngIf="report.value == 'Employee'">
+        <table class="table table-striped" style="margin-top: 20px">
+            <thead>
+                <tr>
+                    <th scope="col">Employee ID</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Mobile Number</th>
+                    <th scope="col">City</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">License Number</th>
+                    <th scope="col">Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of employeeReport">
+                    <th scope="row">{{emp.EmployeeID}}</th>
+                    <td>{{emp.EmployeeName}}</td>
+                    <td>{{emp.MobileNumber}}</td>
+                    <td>{{emp.City}}</td>
+                    <td>{{emp.Email}}</td>
+                    <td>{{emp.LicenseNumber}}</td>
+                    <td>{{emp.Password}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <input type="button" value="Print Reports" class="btn btn-danger" (click)="savePDF()">
+    </div>
+    <div class="container" *ngIf="report.value == 'Customer'">
+        <table class="table table-striped" style="margin-top: 20px">
+            <thead>
+                <tr>
+                    <th scope="col">Customer ID</th>
+                    <th scope="col">Customer Password</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Mobile Number</th>
+                    <th scope="col">E-mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cust of customerReport">
+                    <th scope="row">{{cust.CustomerID}}</th>
+                    <td>{{cust.CustomerPassword}}</td>
+                    <td>{{cust.CustomerName}}</td>
+                    <td>{{cust.MobileNumber}}</td>
+                    <td>{{cust.Email}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="button" value="Print Reports" class="btn btn-danger" (click)="savePDF()">
+    </div>
+    <div class="container" *ngIf="report.value == 'Bookings'">
+        <table class="table table-striped" style="margin-top: 20px">
+            <thead>
+                <tr>
+                    <th scope="col">Booking ID</th>
+                    <th scope="col">From Date</th>
+                    <th scope="col">To Date</th>
+                    <th scope="col">PickUp Time</th>
+                    <th scope="col">Drop Time</th>
+                    <th scope="col">Pickup Point</th>
+                    <th scope="col">Drop Point</th>
+                    <th scope="col">FeedBack</th>
+                    <th scope="col">Fare</th>
+                    <th scope="col">Employee ID</th>
+                    <th scope="col">Customer ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of bookingReport">
+                    <th scope="row">{{user.BookingID}}</th>
+                    <td>{{user.FromDate | date:'shortDate'}}</td>
+                    <td>{{user.ToDate | date:'shortDate'}}</td>
+                    <td>{{user.BookTime}}</td>
+                    <td>{{user.DropTime}}</td>
+                    <td>{{user.PickupPoint}}</td>
+                    <td>{{user.DropPoint}}</td>
+                    <td>{{user.FeedBack}}</td>
+                    <td>{{user.Fare}}</td>
+                    <td>{{user.employeeId}}</td>
+                    <td>{{user.customerId}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="button" value="Print Reports" class="btn btn-danger" (click)="savePDF()">
+    </div>
+    <div class="container" *ngIf="report.value == 'Taxi'">
+        <table class="table table-striped" style="margin-top: 20px">
+            <thead>
+                <tr>
+                    <th scope="col">Taxi ID</th>
+                    <th scope="col">Taxi Number</th>
+                    <th scope="col">Taxi Model</th>
+                    <th scope="col">Taxi Owner ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let taxi of taxiReport">
+                    <th scope="row">{{taxi.TaxiID}}</th>
+                    <td>{{taxi.TaxiNumber}}</td>
+                    <td>{{taxi.TaxiModel}}</td>
+                    <td>{{taxi.TaxiOwnerId}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="button" value="Print Reports" class="btn btn-danger" (click)="savePDF()">
+    </div>
+    <div class="container" *ngIf="report.value == 'EmployeeRosters'">
+        <table class="table table-striped" style="margin-top: 20px">
+            <thead>
+                <tr>
+                    <th scope="col">Roster Id</th>
+                    <th scope="col">From Date</th>
+                    <th scope="col">To Date</th>
+                    <th scope="col">In Time</th>
+                    <th scope="col">Out Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let roster of employeeRosterReport">
+                    <th scope="row">{{roster.RosterID}}</th>
+                    <td>{{roster.FromDate | date:'shortDate'}}</td>
+                    <td>{{roster.ToDate | date:'shortDate'}}</td>
+                    <td>{{roster.InTime}}</td>
+                    <td>{{roster.OutTime}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="button" value="Print Reports" class="btn btn-danger" (click)="savePDF()">
+    </div>
+</form>

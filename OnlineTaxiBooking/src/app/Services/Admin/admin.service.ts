@@ -11,21 +11,46 @@ import { Booking } from '../../Entities/booking';
 })
 export class AdminService {
 
-  employee: Employee = {EmployeeID: null,EmployeeName: null, MobileNumber: null, City:null,Email:null, LicenseNumber: null, Password: null, Available: true}
+  employee: Employee = {EmployeeID: null,EmployeeName: null, MobileNumber: null, City:'',Email:null, LicenseNumber: null, Password: null, Available: true}
   taxi: Taxi = {TaxiID:null,TaxiNumber: null, TaxiModel: null, TaxiOwnerId: null}
   user: User = {UserID:null,UserName: null, UserPassword: null, UserRole: null}
   changePass: ChangePassword = {UserID: null, UserName: null, Password: null, NewPassWord:null, ConfirmPassword: null}
+  
   constructor(private http: HttpClient) { }
   
   changeName: string
   changeEmpPass: string
+
+  getReportOfEmployee(){
+    return this.http.get("http://localhost:9207/api/Employee/GetAll");
+  }
+
+  getReportOfCustomer(){
+    return this.http.get("http://localhost:9207/api/Customer/GetCustomerReport");
+  }
+
+  getReportOfEmployeeRoster(){
+    return this.http.get("http://localhost:9207/api/EmployeeRoster/GetAllRosters");
+  }
+
+  getReportOfTaxi(){
+    return this.http.get("http://localhost:9207/api/Taxi/GetAllTaxis");
+  }
+
+  getReportOfBooking(){
+    return this.http.get("http://localhost:9207/api/Booking/GetAllBookings");
+  }
+
   
+  getAllEmployeeRoster(){
+    return this.http.get("http://localhost:9207/api/EmployeeRoster/GetAllRosters");
+  }
   
   changePassWord(change: ChangePassword){
     this.user.UserID=change.UserID
     this.user.UserName = change.UserName
     this.user.UserPassword=change.NewPassWord
-    alert(JSON.stringify(this.user))
+    //alert(JSON.stringify(this.user))
       return this.http.put("http://localhost:9207/api/User/"+this.user.UserID,this.user)
 
   }
@@ -36,16 +61,14 @@ export class AdminService {
 
   
   changeEmployeePass(change: ChangePassword){
-
-    alert(this.user.UserName+" "+this.changeEmpPass+" "+this.user.UserPassword)
+    //alert(this.user.UserName+" "+this.changeEmpPass+" "+this.user.UserPassword)
     //this.changeName = change.UserName
     //this.changeEmpPass = change.NewPassWord
     return this.http.get("http://localhost:9207/api/Employee/Change/"+this.user.UserName+"/"+this.changeEmpPass+"/"+this.user.UserPassword)
   }
 
   changeCustomerPass(change: ChangePassword){
-
-    alert(this.user.UserName+" "+this.changeEmpPass+" "+this.user.UserPassword)
+    //alert(this.user.UserName+" "+this.changeEmpPass+" "+this.user.UserPassword)
     //this.changeName = change.UserName
     //this.changeEmpPass = change.NewPassWord
     return this.http.get("http://localhost:9207/api/Customer/Change/"+this.user.UserName+"/"+this.changeEmpPass+"/"+this.user.UserPassword)
@@ -53,12 +76,12 @@ export class AdminService {
 
 
   employeeRegister(employee: Employee){
-    alert(JSON.stringify(employee))
+    //alert(JSON.stringify(employee))
     return this.http.post("http://localhost:9207/api/Employee",employee)
   }
 
   taxiRegister(taxi: Taxi){
-    alert(JSON.stringify(taxi)+" "+JSON.stringify(this.employee))
+    //alert(JSON.stringify(taxi)+" "+JSON.stringify(this.employee))
     return this.http.post("http://localhost:9207/api/Taxi",taxi)
   }
 
